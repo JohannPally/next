@@ -22,14 +22,20 @@ export default function App() {
       setFooEvents(previous => [...previous, value]);
     }
 
+    function onReceiveMessage(value) {
+      console.log('received message', value);
+    }
+
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
     socket.on('foo', onFooEvent);
+    socket.on('received', onReceiveMessage);
 
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
       socket.off('foo', onFooEvent);
+      socket.off('received', onReceiveMessage);
     };
   }, []);
 
