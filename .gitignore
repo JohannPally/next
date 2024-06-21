@@ -1,2 +1,2 @@
-archive
-next-client/node_modules
+**/archive/*
+**/next-client/node_module/*
